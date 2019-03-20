@@ -3,9 +3,9 @@
 #include<math.h>
 #include "numbers.dat"
 
-int test(int n);
+int prime_number_test(int n);
 
-int numb(const int* Data, const int left, const int right);
+int prime_number_amount(const int* Data, const int left, const int right);
 
 int main(int argc, char* argv[])
 {
@@ -60,17 +60,17 @@ int main(int argc, char* argv[])
             continue;
         }
 
-        int k = numb(Data, left, right);
+        int k = prime_number_amount(Data, left, right);
         std::cout << k << std::endl;
     }
     return 0;
 }
 
-int test(int n)
+int prime_number_test(int n)
 {
     if ((n == 1) || (n == 0))
         return 0;
-    for (int i = 2; i<= sqrt(n); i ++)
+    for (int i = 2; i*i <= n; i ++)
     {
         if (n % i == 0)
             return 0;
@@ -79,12 +79,12 @@ int test(int n)
     return 1;
 }
 
-int numb(const int* Data, const int left, const int right)
+int prime_number_amount(const int* Data, const int left, const int right)
 {
     int num = 0;
     for (int i = left; i <= right; i++)
     {
-        num = num + test(Data[i]);
+        num = num + prime_number_test(Data[i]);
     }
     return num;
 }
