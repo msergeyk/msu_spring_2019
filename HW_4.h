@@ -23,7 +23,7 @@ class Serializer
     }
 
     template <class T>
-    Error process(T cur_val)
+    Error process(T& cur_val)
     {
         return Error::CorruptedArchive;
     }
@@ -69,7 +69,7 @@ class Deserializer
     template <class T, class... Args>
     Error process(T&& cur_val, Args&&... args)
     {
-        if (process(cur_val) == Error::CorruptedArchive)
+        if (process(std::forward<T>(cur_val)) == Error::CorruptedArchive)
             return Error::CorruptedArchive;
         else
             return process(std::forward<Args>(args)...);
