@@ -14,7 +14,7 @@ class Serializer
     std::ostream& out_;
 
     template <class T, class... Args>
-    Error process(const T& cur_val, Args&&... args)
+    Error process(T&& cur_val, Args&&... args)
     {
         if (process(cur_val) == Error::CorruptedArchive)
             return Error::CorruptedArchive;
@@ -67,7 +67,7 @@ class Deserializer
     std::istream& in_;
 
     template <class T, class... Args>
-    Error process(T& cur_val, Args&&... args)
+    Error process(T&& cur_val, Args&&... args)
     {
         if (process(cur_val) == Error::CorruptedArchive)
             return Error::CorruptedArchive;
