@@ -4,8 +4,8 @@
 #include <thread>
 #include <vector>
 
-#define MAX_SIZE 900000
-#define SIZE sizeof(uint64_t)
+const int MAX_SIZE = 900000;
+const int SIZE = sizeof(uint64_t);
 
 struct Info
 {
@@ -192,7 +192,7 @@ std::vector<Info> make_files(uint64_t file_num)
     return files;
 }
 
-int main(void)
+int main()
 {
     uint64_t size_of_input = Numbers_in_file("input.bin");
     uint64_t file_num = size_of_input / MAX_SIZE;
